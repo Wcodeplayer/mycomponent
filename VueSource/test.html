@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./myvue.js"></script>
+    <script src="./compile.js"></script>
+
+    <body>
+        <div id="app">
+            <p>{{name}}</p>
+            <p k-text="name"></p>
+            <p>{{age}}</p>
+            <p>{{doubleAge}}</p>
+            <input type="text" k-model="name">
+            <button @click="changeName">呵呵</button>
+            <div k-html="html"></div>
+        </div>
+    </body>
+
+    <script>
+        const app = new MyVue({
+            el:"#app",
+            data: {
+                name:"I am test.",
+                age:12,
+                html:'<button>anniu</button>'
+            },
+            created(){
+                console.log('start')
+                setTimeout(()=>{
+                    this.name = '我是测试'
+                },1900)
+            },
+            methods:{
+                changeName(){
+                    this.name = "Change Name"
+                    this.age = 1
+                }
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>
